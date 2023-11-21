@@ -1,0 +1,23 @@
+<div class="Wrapper">
+    <div class="Categories">
+        <div class="Category" *ngFor="let c of categories" (click)="ChangeCategory(c._id)">
+            <h4>{{c.Title}}</h4>
+      </div>
+    </div>
+  
+    <div class="Products">
+      <div class="Product" *ngFor="let p of copyProducts" (click)="GoToProduct(p._id)">
+        <img src="{{p.Img}}" alt="{{p.Title}}">
+
+        <div class="ProductContent">
+          <h5>{{p.Title}}, {{p.Price}}</h5>
+          <p>{{p.Desc}}</p>
+        </div>
+      </div>
+    </div>
+    <div style="width: 25%;">
+      <app-cart></app-cart>
+    </div>
+  </div>
+
+  

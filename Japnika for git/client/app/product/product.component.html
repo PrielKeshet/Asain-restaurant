@@ -1,0 +1,25 @@
+<body>
+    <div class="wrapper">
+      <img class="back-button" (click)="GoBack()" src="assets/arrow.png">
+      <div class="container">
+        <div class="product-details">
+          <h2>{{ product?.Title }}, {{ product?.Price }} ₪</h2>
+          <img class="product-image" [src]="product?.Img" alt="{{ product?.Title }} Image">
+          <p>{{ product?.Desc }}</p>
+        </div>
+        <div class="extras-section">
+          <form #f="ngForm" (ngSubmit)="AddToCart()">
+            <div *ngFor="let e of myExtras" class="extra-item">
+                <label class="checkbox-label">
+                    <input type="checkbox" (change)="onCheckboxChange(e)">
+                    <span class="checkmark"></span>
+                    {{ e.Title }}
+                  </label>
+            </div>
+            <br><br>
+            <button type="submit" class="submit-button">הוסף לעגלה</button>
+                  </form>
+        </div>
+      </div>
+    </div>
+  </body>

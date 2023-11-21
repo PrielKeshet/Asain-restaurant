@@ -1,0 +1,24 @@
+<div class="full-cart">
+  <div class="price">
+    <p>המחיר המלא הוא:</p>
+    <p>{{ cart.fullPrice }}₪</p>
+    <button id="paymentButton" (click)="GoToDetails()">תשלום</button>
+  </div>
+  <div class="products-container">
+    <div class="products">
+      <div class="product" *ngFor="let p of cart.products">
+        <h4>{{ p.food.Title }} {{ p.food.Price }}₪</h4>
+        <div class="note" *ngFor="let n of p.notes">
+          <ng-container *ngIf="n.Price > 0; else noPrice">
+            <p>{{ n.Title }} {{ n.Price }} ₪</p>
+          </ng-container>
+          <ng-template #noPrice>
+            <p>{{ n.Title }}</p>
+          </ng-template>
+          <button (click)="DeleteNote(p.ProductOrderId, n)">מחק שינוי</button>
+        </div>
+        <button (click)="DeleteProduct(p.ProductOrderId)">מחק מוצר</button>
+      </div>
+    </div>
+  </div>
+</div>
